@@ -9,7 +9,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
 
-
+"""
+    前程无忧的岗位详情爬取
+    selenium：自动化爬取
+"""
 # option=Options()
 # option.add_argument('--headless')
 # driver = webdriver.Chrome(chrome_options=option)

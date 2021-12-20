@@ -22,13 +22,13 @@ def get_dbdata():
     return dataset
 
 
-def transform(dataset, n_features=200):
+def transform(dataset, n_features=10):
     vectorizer = TfidfVectorizer(max_df=0.5, max_features=n_features, min_df=2, use_idf=True)
     X = vectorizer.fit_transform(dataset)
     return X, vectorizer
 
 
-def train(X, vectorizer, true_k=6, minibatch=False, showLable=False):
+def train(X, vectorizer, true_k=7, minibatch=False, showLable=False):
     # 使用采样数据还是原始数据训练k-means，
     if minibatch:
         km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
@@ -62,7 +62,7 @@ def k_determin():
     true_ks = []
     scores = []
     # 中心点的个数从3到200(根据自己的数据量改写)
-    for i in range(3, 100, 1):
+    for i in range(3, 50, 1):
         score = train(X, vectorizer, true_k=i) / len(dataset)
         print(i, score)
         true_ks.append(i)
@@ -79,7 +79,7 @@ def main():
     '''在最优参数下输出聚类结果'''
     dataset = get_dbdata()
     X, vectorizer = transform(dataset, n_features=500)
-    score = train(X, vectorizer, true_k=6, showLable=True) / len(dataset)
+    score = train(X, vectorizer, true_k=7, showLable=True) / len(dataset)
     print(score)
 
 

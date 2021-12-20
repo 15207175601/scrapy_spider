@@ -3,7 +3,9 @@ import itertools
 import pandas as pd
 from job51.job51.settings import *
 
-
+"""
+    关联分析
+"""
 def connectMysql():
     # 连接数据库
     conn = pymysql.connect(

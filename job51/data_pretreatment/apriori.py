@@ -23,9 +23,11 @@ def connectMysql(sql):
     return resultList
 
 def load_data():
-    connectMysql("truncate table apriori")
+   #connectMysql("truncate table apriori")
     result = []
+    connectMysql("truncate table job_apriori")
     resultList = connectMysql("select job_name,salary,address,work_year,education from job51")
+    #resultList = connectMysql("select salary,address,work_year from job51")
     for res in resultList:
         result.append(list(res))
     return result
@@ -155,7 +157,7 @@ def calcConf(freqSet, H, supportData, ruleList, minConf=0.7):
         lift = supportData[freqSet] / (supportData[conseq] * supportData[freqSet - conseq])
 
         if conf >= minConf and lift > 1:
-            if (len(freqSet- conseq) > 1):
+            if (len(freqSet- conseq) > 1 and len(conseq) > 1):
                 # print(freqSet - conseq, '-->', conseq, '支持度', round(supportData[freqSet], 6), '置信度：', round(conf, 6),
                 #       'lift值为：', round(lift, 6))
                 # print("*"*200)
@@ -169,7 +171,7 @@ def calcConf(freqSet, H, supportData, ruleList, minConf=0.7):
                     rightItem.append(ritem)
                 support = round(supportData[freqSet], 6)
                 params = ('->'.join(leftItem),'->'.join(rightItem),support,round(conf, 6),round(lift, 6))
-                sql = "insert into apriori (leftItem,rightItem,support,confience,lift) values {} ".format(params)
+                sql = "insert into job_apriori (leftItem,rightItem,support,confience,lift) values {} ".format(params)
                 print(sql)
                 connectMysql(sql)
                 ruleList.append((freqSet - conseq, conseq, conf))
@@ -189,6 +191,6 @@ def gen_rule(L, supportData, minConf=0.7):
 
 
 if __name__ == '__main__':
-    dataSet = load_data()[:100000]
-    L, supportData = apriori(dataSet, minSupport=0.05)
+    dataSet = load_data()
+    L, supportData = apriori(dataSet, minSupport=0.001)
     rule = gen_rule(L, supportData, minConf=0.3)
