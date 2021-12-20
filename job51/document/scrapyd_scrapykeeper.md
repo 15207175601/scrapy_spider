@@ -21,7 +21,7 @@ scrapyd
 ```
 得到以下结果：
 
-![image-20211220164606345](C:\Users\方诚源\AppData\Roaming\Typora\typora-user-images\image-20211220164606345.png)
+![image-20211220164606345](./scrapyd/scrapyd-deploy.png)
 
 发布项目：
 
