@@ -6,7 +6,6 @@ import random
 from scrapy import signals
 from scrapy.exceptions import NotConfigured
 # from .settings import USER_AGENT
-from twisted.internet.error import TimeoutError
 # useful for handling different item types with a single interface
 from fake_useragent import UserAgent
 

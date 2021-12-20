@@ -2,12 +2,12 @@ import scrapy
 import json
 import time
 from ..items import Job51Item
-
+import logging
 
 class WuyouSpider(scrapy.Spider):
     name = 'wuyou'
     allowed_domains = ['51job.com']
-
+    logger = logging.getLogger('Mylogger')
     def start_requests(self):
         # words=['python','c++','c语言','java','nlp','人工智能','数据挖掘','web前端']
         # for word in words:
@@ -27,8 +27,7 @@ class WuyouSpider(scrapy.Spider):
             result_list = data.get('engine_jds', [])
             for res in result_list:
                 item = Job51Item()
-                # item = {}
-                # item['coid'] = res.get('coid', -1)
+                item['coid'] = res.get('coid', -1)
                 item['job_name'] = res.get('job_name', -1)
                 item['company_name'] = res.get('company_name', -1)
                 salary = res.get('providesalary_text')
@@ -55,6 +54,7 @@ class WuyouSpider(scrapy.Spider):
                 item['job_href'] = res.get('job_href', -1)
                 yield item
                 # else:
+                self.logger.info(item)
                 print("************当前是第%s页****************" % data['curr_page'])
 
 

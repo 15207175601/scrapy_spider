@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="job51" uuid="0cdb7ab6-556a-4256-81ec-bc4da5fabc3a">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\scrapy_spider\job51\dbs\job51.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="SpiderKeeper" uuid="ab2f8bca-5257-4185-9e10-24ad074cb2e8">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\scrapy_spider\job51\SpiderKeeper.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="job51_spider" uuid="d898e193-30fe-40e7-8ebf-7f334281cfc0">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\scrapy_spider\job51\dbs\job51_spider.db</jdbc-url>
+    </data-source>
+  </component>
+</project>
